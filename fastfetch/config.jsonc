@@ -1,0 +1,175 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "type": "auto",
+    "source": "~/dotfiles/fastfetch/sisyphus.txt",
+    "color": {
+      "1": "#d8d8d8",
+      "2": "#f4bf75",
+      "3": "#c98e3b"
+    },
+    "padding": {
+      "top": 1,
+      "right": 2,
+      "left": 2
+    }
+  },
+  "display": {
+      "color": {
+        "keys": "#f4bf75",
+        "title": "white",
+        "separator": "white"
+      },
+      "separator": " → "
+    },
+  "modules": [
+    {
+      "type": "custom",
+      "format": "{##f4bf75}┌─────────{#}{##c98e3b} Hardware {#}{##f4bf75}────────────┐",
+      "outputColor": "#f4bf75"
+    },
+    {
+      "type": "host",
+      "key": "├Host",
+      "format": "{name}"
+    },
+    {
+      "type": "display",
+      "format": "{width}x{height}, {inch}\", {refresh-rate}Hz, {ppi}ppi",
+      "key": "├Disp"
+    },
+    {
+      "type": "cpu",
+      "key": "├CPU ",
+      "format": "{name}, {freq-max}"
+    },
+    {
+      "type": "gpu",
+      "key": "├GPU ",
+      "format": "{name}"
+    },
+    {
+      "type": "memory",
+      "key": "├RAM "
+    },
+    {
+      "type": "disk",
+      "key": "├Disk",
+      "format": "{size-used}/{size-total}",
+      "folders": "/",
+      "percent": {
+        "type": 2
+      }
+    },
+    {
+      "type": "disk",
+      "key": "└─   ",
+      "format": "{size-percentage-bar}",
+      "folders": "/",
+      "percent": {
+        "type": 2
+      }
+    },
+    {
+      "type": "custom",
+      "format": "{##f4bf75}┌─────────{#}{##c98e3b} Software {#}{##f4bf75}────────────┐",
+      "outputColor": "blue"
+    },
+    {
+      "type": "os",
+      "format": "{pretty-name}",
+      "key": "├OS  "
+    },
+    {
+      "type": "kernel",
+      "format": "{release}",
+      "key": "├Kern"
+    },
+    {
+      "type": "packages",
+      "key": "├Pkgs"
+    },
+    {
+      "type": "terminal",
+      "key": "├Term"
+    },
+    {
+      "type": "shell",
+      "key": "└Sh  "
+    },
+    {
+      "type": "custom",
+      "format": "{##f4bf75}┌──────────{#}{##c98e3b} Theming {#}{##f4bf75}────────────┐",
+      "outputColor": "blue"
+    },
+    {
+      "type": "de",
+      "key": "├DE"
+    },
+    {
+      "type": "wm",
+      "key": "├WM",
+      "format": "{pretty-name}, {protocol-name}"
+    },
+    {
+      "type": "lm",
+      "key": "├LM",
+      "format": "{service} {version}"
+    },
+    {
+      "type": "terminalfont",
+      "key": "├TmFont"
+    },
+    {
+      "type": "icons",
+      "key": "├Icons"
+    },
+    {
+      "type": "colors",
+      "key": "└",
+      "symbol": "circle"
+    },
+    {
+      "type": "custom",
+      "format": "{##f4bf75}┌────────────{#}{##c98e3b} Time {#}{##f4bf75}─────────────┐",
+      "outputColor": "blue"
+    },
+    {
+      "type": "uptime",
+      "key": "├Up "
+    },
+    {
+      "type": "disk",
+      "key": "├Age",
+      "folders": "/",
+      "format": "{days} days"
+    },
+    {
+      "type": "command",
+      "key": "└Backup",
+      "text": "latest=$(ls -1 /timeshift/snapshots 2>/dev/null | sort | tail -n 1); if [ -n \"$latest\" ]; then echo \"$latest\"; else echo \"No saves. Hardcore mode \"; fi"
+    },
+    "break",
+    {
+      "type": "users",
+      "key": " ",
+      "format": "Hi, I'm {##f4bf75}{name}"
+    },
+    {
+      "type": "os",
+      "format": "Btw, I've been using {##f4bf75}{pretty-name}",
+      "key": " "
+    },
+    {
+      "type": "de",
+      "format": "with {##f4bf75}{pretty-name}",
+      "key": " "
+    },
+    {
+      "type": "disk",
+      "folders": "/",
+      "key": " ",
+      "format": "for {##f4bf75}{days} {##fcfcfc}days"
+    }
+  ]
+}
