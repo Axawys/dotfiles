@@ -1,95 +1,139 @@
-* {
-  border: none;
-  border-radius: 0;
-  min-height: 0;
-  min-width: 0;
-  font-family: "Noto Sans", sans-serif;
-  font-size: 14px;
-  font-weight: 700;
-}
+{
+  "layer": "top",
+  "position": "top",
+  "height": 34,
+  "spacing": 6,
+  "reload_style_on_change": true,
 
-window#waybar {
-  background: #232629;
-  color: #e6e6e6;
-}
+  "modules-left": [
+    "niri/workspaces",
+    "custom/alacritty",
+    "custom/files",
+    "custom/chrome",
+    "custom/telegram",
+    "custom/code",
+    "custom/vpn"
+  ],
+  "modules-center": [],
+  "modules-right": [
+    "cpu",
+    "memory",
+    "custom/network",
+    "custom/volume",
+    "tray",
+    "niri/language",
+    "clock",
+    "custom/power"
+  ],
 
-.modules-left,
-.modules-right {
-  padding: 0 8px;
-}
+  "niri/workspaces": {
+    "format": "{value}",
+    "on-click": "activate",
+    "on-scroll-up": "activate prev",
+    "on-scroll-down": "activate next",
+    "all-outputs": false
+  },
 
-#workspaces {
-  margin-right: 10px;
-}
+  "custom/alacritty": {
+    "format": " Term ",
+    "on-click": "alacritty",
+    "tooltip": true,
+    "tooltip-format": "Alacritty",
+    "interval": "once"
+  },
 
-#workspaces button {
-  background: transparent;
-  color: #bdbdbd;
-  padding: 0 10px;
-  margin: 4px 2px;
-  border-radius: 5px;
-  box-shadow: none;
-  text-shadow: none;
-}
+  "custom/files": {
+    "format": " Files ",
+    "on-click": "nautilus --new-window",
+    "tooltip": true,
+    "tooltip-format": "Files",
+    "interval": "once"
+  },
 
-#workspaces button.active {
-  background: #4a525c;
-  color: #ffffff;
-}
+  "custom/chrome": {
+    "format": " Chrome ",
+    "on-click": "flatpak run com.google.Chrome",
+    "tooltip": true,
+    "tooltip-format": "Google Chrome",
+    "interval": "once"
+  },
 
-#workspaces button:hover {
-  background: #353a40;
-  color: #ffffff;
-}
+  "custom/telegram": {
+    "format": " Telegram ",
+    "on-click": "flatpak run org.telegram.desktop",
+    "tooltip": true,
+    "tooltip-format": "Telegram",
+    "interval": "once"
+  },
 
-#custom-alacritty,
-#custom-files,
-#custom-chrome,
-#custom-telegram,
-#custom-code,
-#custom-vpn,
-#cpu,
-#memory,
-#custom-network,
-#custom-volume,
-#tray,
-#language,
-#clock,
-#custom-power {
-  padding: 0 10px;
-  margin: 4px 2px;
-  border-radius: 5px;
-  background: transparent;
-}
+  "custom/code": {
+    "format": " VScode ",
+    "on-click": "code",
+    "tooltip": true,
+    "tooltip-format": "Visual Studio Code",
+    "interval": "once"
+  },
 
-#custom-alacritty:hover,
-#custom-files:hover,
-#custom-chrome:hover,
-#custom-telegram:hover,
-#custom-code:hover,
-#custom-vpn:hover,
-#cpu:hover,
-#memory:hover,
-#custom-network:hover,
-#custom-volume:hover,
-#tray:hover,
-#language:hover,
-#clock:hover,
-#custom-power:hover {
-  background: #353a40;
-  color: #ffffff;
-}
+  "custom/vpn": {
+    "format": "VPN",
+    "on-click": " hiddify",
+    "tooltip": true,
+    "tooltip-format": "Hiddify",
+    "interval": "once"
+  },
 
-#custom-network {
-  min-width: 170px;
-}
+  "cpu": {
+    "interval": 2,
+    "format": "CPU {usage}%",
+    "tooltip": true,
+    "on-click": "resources"
+  },
 
-#custom-power {
-  min-width: 34px;
-}
+  "memory": {
+    "interval": 2,
+    "format": "RAM {used:0.1f}G/{total:0.1f}G",
+    "tooltip": true,
+    "tooltip-format": "Используется {used:0.1f} GiB из {total:0.1f} GiB ({percentage}%)"
+  },
 
-tooltip {
-  background: #2b3036;
-  color: #f2f2f2;
-  border: 1px solid #444b55;
+  "custom/network": {
+    "exec": "/home/axawys/.config/waybar/scripts/network.sh",
+    "interval": 1,
+    "tooltip": false
+  },
+
+  "custom/volume": {
+    "exec": "/home/axawys/.config/waybar/scripts/volume.sh",
+    "interval": 1,
+    "on-click": "pavucontrol",
+    "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+ -l 1.0",
+    "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-",
+    "on-click-middle": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+    "tooltip": true,
+    "tooltip-format": "ЛКМ: pavucontrol | Колесо: громкость | СКМ: mute"
+},
+
+  "tray": {
+    "icon-size": 16,
+    "spacing": 8
+  },
+
+  "niri/language": {
+    "format": "{short}",
+    "tooltip": false
+  },
+
+  "clock": {
+    "format": "{:%H:%M}",
+    "tooltip-format": "{:%d.%m.%Y}"
+  },
+
+  "custom/power": {
+  "format": " OFF ",
+  "on-click": "/home/axawys/.config/waybar/scripts/power-left.sh",
+  "on-click-right": "/home/axawys/.config/waybar/scripts/power-right.sh",
+  //"tooltip": true,
+  "tooltip-format": "Двойной левый клик — выключение\nДвойной правый — перезагрузка",
+  "interval": "once"
+}
 }
