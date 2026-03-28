@@ -1,0 +1,95 @@
+* {
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+  min-width: 0;
+  font-family: "Noto Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+window#waybar {
+  background: #232629;
+  color: #e6e6e6;
+}
+
+.modules-left,
+.modules-right {
+  padding: 0 8px;
+}
+
+#workspaces {
+  margin-right: 10px;
+}
+
+#workspaces button {
+  background: transparent;
+  color: #bdbdbd;
+  padding: 0 10px;
+  margin: 4px 2px;
+  border-radius: 5px;
+  box-shadow: none;
+  text-shadow: none;
+}
+
+#workspaces button.active {
+  background: #4a525c;
+  color: #ffffff;
+}
+
+#workspaces button:hover {
+  background: #353a40;
+  color: #ffffff;
+}
+
+#custom-alacritty,
+#custom-files,
+#custom-chrome,
+#custom-telegram,
+#custom-code,
+#custom-vpn,
+#cpu,
+#memory,
+#custom-network,
+#custom-volume,
+#tray,
+#language,
+#clock,
+#custom-power {
+  padding: 0 10px;
+  margin: 4px 2px;
+  border-radius: 5px;
+  background: transparent;
+}
+
+#custom-alacritty:hover,
+#custom-files:hover,
+#custom-chrome:hover,
+#custom-telegram:hover,
+#custom-code:hover,
+#custom-vpn:hover,
+#cpu:hover,
+#memory:hover,
+#custom-network:hover,
+#custom-volume:hover,
+#tray:hover,
+#language:hover,
+#clock:hover,
+#custom-power:hover {
+  background: #353a40;
+  color: #ffffff;
+}
+
+#custom-network {
+  min-width: 170px;
+}
+
+#custom-power {
+  min-width: 34px;
+}
+
+tooltip {
+  background: #2b3036;
+  color: #f2f2f2;
+  border: 1px solid #444b55;
+}
