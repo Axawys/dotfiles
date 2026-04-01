@@ -20,6 +20,7 @@
     "memory",
     "custom/network",
     "custom/volume",
+    "custom/brightness",
     "tray",
     "niri/language",
     "clock",
@@ -52,7 +53,7 @@
 
   "custom/chrome": {
     "format": " Chrome ",
-    "on-click": "flatpak run com.google.Chrome",
+    "on-click": "flatpak run com.google.Chrome --proxy-server=\"http://127.0.0.1:12334\"",
     "tooltip": true,
     "tooltip-format": "Google Chrome",
     "interval": "once"
@@ -111,7 +112,17 @@
     "on-click-middle": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
     "tooltip": true,
     "tooltip-format": "ЛКМ: pavucontrol | Колесо: громкость | СКМ: mute"
-},
+  },
+
+  "custom/brightness": {
+  "exec": "/home/axawys/.config/waybar/scripts/brightness-get.sh",
+  "return-type": "json",
+  "signal": 8,
+  "exec-on-event": true,
+  "smooth-scrolling-threshold": 0.5,
+  "on-scroll-up": "/home/axawys/.config/waybar/scripts/brightness-set.sh up",
+  "on-scroll-down": "/home/axawys/.config/waybar/scripts/brightness-set.sh down"
+  },
 
   "tray": {
     "icon-size": 16,
@@ -120,7 +131,8 @@
 
   "niri/language": {
     "format": "{short}",
-    "tooltip": false
+    "tooltip": false,
+    "on-click": "niri msg action switch-layout next"
   },
 
   "clock": {
